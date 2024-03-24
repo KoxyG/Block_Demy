@@ -138,6 +138,20 @@ app.post("/addAdmin", (req, res) => {
   res.send({ some: "response", senderAddress });
 });
 
+app.post("/registerStudent", (req, res) => {
+  const senderAddress = req.header("x-msg_sender");
+  console.log("registerStudent..", senderAddress, req.body);
+  const call = encodeFunctionData({
+    abi: contractAbi,
+    functionName: "registerStudent",
+    args: [req.header("x-msg_sender")],
+  })
+  derollApp.createVoucher({
+    destination: contractAddress,
+    payload: call
+  })
+  res.send({ some: "response", senderAddress });
+});
 
 app.listen(port, () => {
     console.log(`[server]: Server is running at http://localhost:${port}`);
