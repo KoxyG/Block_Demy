@@ -32,7 +32,7 @@ const port = 8383;
 
 app.use(express.json());
 
-app.post("/instructor/register", (req, res) => {
+app.post("/instructor/register", async (req, res) => {
     const senderAddress = req.header("x-msg_sender");
     console.log("RegisterInstructor..", senderAddress, req.body);
     const call = encodeFunctionData({
@@ -40,7 +40,7 @@ app.post("/instructor/register", (req, res) => {
       functionName: "registerInstructor",
       args: [req.body.instructor, req.body.courseName, req.body.certificateURI, req.body.courseFee],
     })
-    derollApp.createVoucher({
+    await derollApp.createVoucher({
       destination: contractAddress,
       payload: call
     })
