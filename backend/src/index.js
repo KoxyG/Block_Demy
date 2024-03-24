@@ -123,6 +123,22 @@ app.post("/removeAdmin", (req, res) => {
 });
 
 
+app.post("/addAdmin", (req, res) => {
+  const senderAddress = req.header("x-msg_sender");
+  console.log("addAdmin..", senderAddress, req.body);
+  const call = encodeFunctionData({
+    abi: contractAbi,
+    functionName: "addAdmin",
+    args: [req.header("x-msg_sender")],
+  })
+  derollApp.createVoucher({
+    destination: contractAddress,
+    payload: call
+  })
+  res.send({ some: "response", senderAddress });
+});
+
+
 app.listen(port, () => {
     console.log(`[server]: Server is running at http://localhost:${port}`);
 });
