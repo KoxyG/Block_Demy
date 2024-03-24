@@ -38,7 +38,7 @@ app.post("/instructor/register", async (req, res) => {
     const call = encodeFunctionData({
       abi: contractAbi,
       functionName: "registerInstructor",
-      args: [req.body.instructor, req.body.courseName, req.body.certificateURI, req.body.courseFee],
+      args: [getAddress(senderAddress), req.body.courseName, req.body.certificateURI, BigInt(req.body.courseFee)],
     })
     await derollApp.createVoucher({
       destination: contractAddress,
