@@ -1,6 +1,4 @@
 const contractAbi = require("./contractAbi");
-// import { AdvanceRoute, Router } from "cartesi-router";
-// import { Wallet, Notice, Error_out, Voucher } from "cartesi-wallet";
 const { encodeFunctionData, getAddress, hexToBytes } = require("viem");
 
 const { CartesifyBackend } = require("@calindra/cartesify-backend")
@@ -32,7 +30,7 @@ const port = 8383;
 
 app.use(express.json());
 
-app.post("/instructor/register", async (req, res) => {
+app.post("/instructorRegister", async (req, res) => {
     const senderAddress = req.header("x-msg_sender");
     console.log("RegisterInstructor..", senderAddress, req.body);
     const call = encodeFunctionData({
@@ -47,13 +45,13 @@ app.post("/instructor/register", async (req, res) => {
     res.send({ some: "response", senderAddress });
 });
 
-app.post("/other-function", (req, res) => {
+app.post("/purchaseModule", (req, res) => {
   const senderAddress = req.header("x-msg_sender");
-  console.log("RegisterInstructor..", senderAddress, req.body);
+  console.log("purchaseModule..", senderAddress, req.body);
   const call = encodeFunctionData({
     abi: contractAbi,
-    functionName: "registerInstructor",
-    args: [req.body.instructor, req.body.courseName, req.body.certificateURI, req.body.courseFee],
+    functionName: "purchaseModule",
+    args: [req.body.moduleIndex, req.body.courseName, req.body.certificateURI, req.body.courseFee],
   })
   derollApp.createVoucher({
     destination: contractAddress,
