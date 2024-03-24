@@ -91,6 +91,38 @@ app.post("/claimCertificate", (req, res) => {
   res.send({ some: "response", senderAddress });
 });
 
+app.post("/claimCertificate", (req, res) => {
+  const senderAddress = req.header("x-msg_sender");
+  console.log("claimCertificate..", senderAddress, req.body);
+  const call = encodeFunctionData({
+    abi: contractAbi,
+    functionName: "claimCertificate",
+    args: [req.body.moduleIndex],
+  })
+  derollApp.createVoucher({
+    destination: contractAddress,
+    payload: call
+  })
+  res.send({ some: "response", senderAddress });
+});
+
+
+app.post("/removeAdmin", (req, res) => {
+  const senderAddress = req.header("x-msg_sender");
+  console.log("removeAdmin..", senderAddress, req.body);
+  const call = encodeFunctionData({
+    abi: contractAbi,
+    functionName: "removeAdmin",
+    args: [req.header("x-msg_sender")],
+  })
+  derollApp.createVoucher({
+    destination: contractAddress,
+    payload: call
+  })
+  res.send({ some: "response", senderAddress });
+});
+
+
 app.listen(port, () => {
     console.log(`[server]: Server is running at http://localhost:${port}`);
 });
