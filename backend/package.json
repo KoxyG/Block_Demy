@@ -4,8 +4,10 @@
   "description": "JS DApp",
   "dependencies": {
     "@calindra/cartesify-backend": "^0.1.2",
+    "@jest/globals": "^29.7.0",
     "cartesi-router": "^1.0.4",
     "cartesi-wallet": "^1.0.4",
+    "dotenv": "^16.4.5",
     "ethers": "^6.7.1",
     "express": "^4.19.1",
     "openapi-fetch": "^0.7",
