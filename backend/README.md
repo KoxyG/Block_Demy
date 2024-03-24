@@ -7,10 +7,10 @@ BlockDemy is a decentralized educational platform leveraging Cartesi roll ups fo
 - **Languages:**
   - JSX
   - JavaScript
+  - Viem
 
 - **Technologies:**
   - Docker
-  - Viem
   - OpenAPI Fetch
   - Cartesi
 
@@ -31,6 +31,13 @@ To install and run the project, follow these steps:
 ```Install
   npm insall
 
-```Run the project:
+```To build Cartesi Maachine:
+   Sunodo build
+
+
+```To run Cartesi Maachine:
+   Sunodo run
+
+```Start backend serve:
    brunodo
  
