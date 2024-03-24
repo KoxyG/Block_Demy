@@ -3,9 +3,11 @@
   "version": "0.1.0",
   "description": "JS DApp",
   "dependencies": {
-    "ethers": "^6.7.1",
+    "@calindra/cartesify-backend": "^0.1.2",
     "cartesi-router": "^1.0.4",
     "cartesi-wallet": "^1.0.4",
+    "ethers": "^6.7.1",
+    "express": "^4.19.1",
     "openapi-fetch": "^0.7",
     "viem": "^1.21.4"
   },
