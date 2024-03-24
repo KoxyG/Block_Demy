@@ -51,7 +51,38 @@ app.post("/purchaseModule", (req, res) => {
   const call = encodeFunctionData({
     abi: contractAbi,
     functionName: "purchaseModule",
-    args: [req.body.moduleIndex, req.body.courseName, req.body.certificateURI, req.body.courseFee],
+    args: [req.body.moduleIndex],
+  })
+  derollApp.createVoucher({
+    destination: contractAddress,
+    payload: call
+  })
+  res.send({ some: "response", senderAddress });
+});
+
+
+app.post("/purchaseModule", (req, res) => {
+  const senderAddress = req.header("x-msg_sender");
+  console.log("purchaseModule..", senderAddress, req.body);
+  const call = encodeFunctionData({
+    abi: contractAbi,
+    functionName: "purchaseModule",
+    args: [req.body.moduleIndex],
+  })
+  derollApp.createVoucher({
+    destination: contractAddress,
+    payload: call
+  })
+  res.send({ some: "response", senderAddress });
+});
+
+app.post("/claimCertificate", (req, res) => {
+  const senderAddress = req.header("x-msg_sender");
+  console.log("claimCertificate..", senderAddress, req.body);
+  const call = encodeFunctionData({
+    abi: contractAbi,
+    functionName: "claimCertificate",
+    args: [req.body.moduleIndex],
   })
   derollApp.createVoucher({
     destination: contractAddress,
