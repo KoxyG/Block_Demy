@@ -13,6 +13,8 @@ BlockDemy is a decentralized educational platform leveraging Cartesi roll ups fo
   - Docker
   - OpenAPI Fetch
   - Cartesi
+ 
+
 
 ## Installations
 
@@ -40,7 +42,11 @@ To install and run the project, follow these steps:
 
 ```Start backend serve:
    brunodo
-
+```
 [BlockDemyFrontEnd](https://github.com/nneky28/blockDemy)
+
+
+
+
 
  
